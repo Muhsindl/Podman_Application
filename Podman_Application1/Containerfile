@@ -1,0 +1,5 @@
+# Temel imaj olarak hafif bir Alpine Linux seçiyoruz
+FROM alpine:latest
+
+# Uygulama çalıştığında ekrana yazdırılacak komut
+CMD ["echo", "Hello, Welcome to Podman"]
