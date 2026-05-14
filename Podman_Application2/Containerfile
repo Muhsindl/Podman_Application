@@ -1,0 +1,20 @@
+# Hafif bir Python imajı seçiyoruz
+FROM docker.io/library/python:3.9-slim
+
+# Konteyner içindeki çalışma dizinini ayarlıyoruz
+WORKDIR /app
+
+# Önbellek (cache) optimizasyonu: Önce SADECE bağımlılık dosyasını kopyala
+COPY requirements.txt .
+
+# Bağımlılıkları kur
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Kalan proje dosyalarını (app.py) çalışma dizinine kopyala
+COPY . .
+
+# Uygulamanın 5000 portunu kullandığını belirt
+EXPOSE 5000
+
+# Konteyner başlatıldığında uygulamayı çalıştır
+CMD ["python", "app.py"]
