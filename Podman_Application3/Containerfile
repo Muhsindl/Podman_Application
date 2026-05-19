@@ -1,0 +1,11 @@
+# Hafif bir Alpine Linux kullanacağız (Network araçları için)
+FROM alpine:latest
+
+# Gerekli paketleri yükle (ping ve sistem bilgisi için)
+RUN apk add --no-cache iputils bash
+
+# Script dosyamızı içeri kopyala
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# Container başladığında scripti çalıştır
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
