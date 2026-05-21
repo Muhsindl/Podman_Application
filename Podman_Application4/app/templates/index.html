@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podman Dinamik Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ greeting }}</h1>
+        <p>Bu sayfa bir Podman konteyneri içinden <strong>8080</strong> portu üzerinden yayınlanmaktadır.</p>
+        
+        <div class="time-box">
+            Sunucu Saati: <br>
+            <strong>{{ time }}</strong>
+        </div>
+        
+        <button onclick="window.location.reload();">Sayfayı Yenile</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Hafif bir Python imajı
+FROM docker.io/python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Proje dosyalarını konteynere kopyalıyoruz
+COPY app/ ./app/
+
+# Konteynerin 8080 portundan yayın yapacağını belirtiyoruz
+EXPOSE 8080
+
+# Gunicorn web sunucusu ile uygulamayı 8080 portunda başlatıyoruz
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app.main:app"]
