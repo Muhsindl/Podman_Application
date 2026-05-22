@@ -1,0 +1,18 @@
+# Temel Python imajını kullan
+FROM python:3.9-slim
+
+# Konteyner içindeki çalışma dizinini ayarla
+WORKDIR /app
+
+# Gereksinim dosyasını kopyala ve kütüphaneleri kur
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Tüm proje dosyalarını konteynere kopyala
+COPY . .
+
+# Flask'ın çalışacağı portu dışa aç
+EXPOSE 5000
+
+# Uygulamayı başlat
+CMD ["python", "app.py"]
